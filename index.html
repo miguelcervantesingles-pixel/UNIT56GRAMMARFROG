@@ -3,250 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>🐸 Frog Grammar Adventure</title>
+<title>🐸 Awesome Experiences — 6th Grade</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Quicksand:wght@400;600;700&display=swap');
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Nunito',sans-serif;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;background:#021a3d;}
-  #water-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
-  .screen{width:100%;min-height:100vh;display:none;flex-direction:column;align-items:center;justify-content:center;position:relative;}
+  :root{
+    --forest-dark:#0a1f0a;--forest-mid:#0d2e0d;--forest-canopy:#0f3d10;
+    --leaf:#2d7a1f;--leaf-bright:#4abf2e;--bark:#3d1f0a;
+    --gold:#f0c030;--amber:#e08020;--cream:#f5eed8;
+    --firefly:#c8ff80;--mist:rgba(180,255,160,0.07);
+  }
+  body{font-family:'Quicksand',sans-serif;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;background:var(--forest-dark);}
+  #forest-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .screen{width:100%;min-height:100vh;display:none;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:1;}
   .screen.active{display:flex;}
 
-  /* WELCOME */
-  #welcome-screen{z-index:1;}
-  .welcome-card{background:rgba(5,30,65,0.85);backdrop-filter:blur(16px);border:2px solid rgba(100,200,255,0.3);border-radius:30px;padding:clamp(22px,5vw,52px);text-align:center;max-width:560px;width:92%;z-index:2;box-shadow:0 0 60px rgba(0,150,255,0.18),0 20px 60px rgba(0,0,0,0.5);}
-  .welcome-title{font-family:'Fredoka One',cursive;font-size:clamp(1.7rem,5.5vw,3.4rem);line-height:1.1;margin-bottom:8px;}
-  .rainbow-letter{display:inline-block;animation:bounceLetter 1s infinite alternate;}
-  @keyframes bounceLetter{from{transform:translateY(0)}to{transform:translateY(-9px)}}
-  .welcome-frog{font-size:clamp(3rem,10vw,5.5rem);display:block;margin:12px 0;animation:frogBob 2s ease-in-out infinite;}
-  @keyframes frogBob{0%,100%{transform:scaleY(1)}50%{transform:scaleY(0.88) scaleX(1.1)}}
-  .welcome-sub{color:rgba(180,230,255,0.9);font-size:clamp(0.85rem,2.3vw,1.12rem);margin-bottom:22px;line-height:1.5;}
-  .name-wrap{display:flex;flex-direction:column;gap:12px;align-items:center;}
-  .name-label{color:#ffd700;font-size:clamp(0.95rem,2.3vw,1.18rem);font-weight:700;}
-  .name-input{width:100%;max-width:340px;padding:13px 20px;border-radius:50px;border:2.5px solid #ffd700;background:rgba(255,255,255,0.08);color:white;font-size:clamp(1rem,2.3vw,1.12rem);font-family:'Nunito',sans-serif;text-align:center;outline:none;transition:all 0.3s;}
-  .name-input::placeholder{color:rgba(255,255,255,0.4);}
-  .name-input:focus{background:rgba(255,255,255,0.15);box-shadow:0 0 22px rgba(255,215,0,0.35);}
-  .start-btn{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#1a0a00;border:none;border-radius:50px;padding:clamp(11px,2.5vw,17px) clamp(28px,6vw,58px);font-size:clamp(1rem,2.8vw,1.32rem);font-family:'Fredoka One',cursive;cursor:pointer;box-shadow:0 6px 22px rgba(255,140,0,0.45);transition:all 0.2s;letter-spacing:1px;margin-top:4px;}
-  .start-btn:hover{transform:scale(1.06) translateY(-2px);}
-  .start-btn:active{transform:scale(0.97);}
+  /* ===== WELCOME ===== */
+  .welcome-card{background:rgba(8,22,8,0.92);backdrop-filter:blur(18px);border:2px solid rgba(74,191,46,0.35);border-radius:28px;padding:clamp(22px,5vw,48px);text-align:center;max-width:600px;width:92%;box-shadow:0 0 80px rgba(40,160,20,0.15),0 0 0 1px rgba(74,191,46,0.1),0 24px 60px rgba(0,0,0,0.7);}
+  .welcome-title{font-family:'Boogaloo',cursive;font-size:clamp(1.6rem,5vw,3.2rem);line-height:1.05;margin-bottom:3px;}
+  .welcome-grade{font-family:'Boogaloo',cursive;font-size:clamp(0.85rem,2.2vw,1.2rem);color:var(--gold);margin-bottom:8px;}
+  .bounce-letter{display:inline-block;animation:bLetter 1.1s ease-in-out infinite alternate;}
+  @keyframes bLetter{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(-10px) rotate(2deg)}}
+  .welcome-frog{font-size:clamp(3rem,9vw,5rem);display:block;margin:8px 0;animation:frogBounce 1.8s ease-in-out infinite;}
+  @keyframes frogBounce{0%,100%{transform:scaleY(1)}45%{transform:scaleY(0.82) scaleX(1.12)}50%{transform:scaleY(1.15) scaleX(0.9) translateY(-12px)}55%{transform:scaleY(0.88) scaleX(1.08)}}
+  .welcome-sub{color:rgba(200,255,170,0.85);font-size:clamp(0.8rem,2vw,1rem);margin-bottom:16px;line-height:1.65;}
+  .part-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+  .ppill{border-radius:22px;padding:6px 16px;font-size:clamp(0.72rem,1.8vw,0.88rem);font-weight:700;letter-spacing:0.5px;}
+  .ppill-1{background:rgba(240,192,48,0.18);border:1.5px solid rgba(240,192,48,0.5);color:var(--gold);}
+  .ppill-2{background:rgba(74,191,46,0.15);border:1.5px solid rgba(74,191,46,0.45);color:var(--firefly);}
+  .name-wrap{display:flex;flex-direction:column;gap:11px;align-items:center;}
+  .name-label{color:var(--gold);font-size:clamp(0.9rem,2.2vw,1.1rem);font-weight:700;}
+  .name-input{width:100%;max-width:340px;padding:12px 20px;border-radius:50px;border:2px solid var(--leaf-bright);background:rgba(255,255,255,0.06);color:white;font-size:clamp(0.95rem,2.2vw,1.05rem);font-family:'Quicksand',sans-serif;text-align:center;outline:none;transition:all 0.3s;}
+  .name-input::placeholder{color:rgba(255,255,255,0.3);}
+  .name-input:focus{background:rgba(255,255,255,0.11);box-shadow:0 0 24px rgba(74,191,46,0.35);}
+  .start-btn{background:linear-gradient(135deg,#3aaa1a,#1a7a08);color:white;border:none;border-radius:50px;padding:clamp(11px,2.5vw,16px) clamp(28px,6vw,56px);font-size:clamp(0.98rem,2.6vw,1.22rem);font-family:'Boogaloo',cursive;cursor:pointer;box-shadow:0 6px 24px rgba(40,160,10,0.45);transition:all 0.22s;letter-spacing:1px;}
+  .start-btn:hover{transform:scale(1.07) translateY(-2px);box-shadow:0 10px 30px rgba(60,200,20,0.5);}
+  .start-btn:active{transform:scale(0.96);}
 
-  /* SCORE BAR */
-  .score-bar{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:6px 14px;background:rgba(2,12,32,0.75);backdrop-filter:blur(8px);z-index:50;font-family:'Fredoka One',cursive;font-size:clamp(0.8rem,2.2vw,1rem);color:white;border-bottom:1px solid rgba(100,200,255,0.18);}
-  .score-bar .lives{color:#ff6b6b;letter-spacing:3px;}
-  .score-bar .prog{color:#ffd700;}
-  .score-bar .pname{color:#7de875;}
+  /* ===== SCORE BAR ===== */
+  .score-bar{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:6px 14px;background:rgba(5,14,5,0.88);backdrop-filter:blur(10px);z-index:50;font-family:'Boogaloo',cursive;font-size:clamp(0.78rem,2vw,0.98rem);color:white;border-bottom:1px solid rgba(74,191,46,0.18);}
+  .score-bar .lives{color:#ff7070;letter-spacing:2px;}
+  .score-bar .prog{color:var(--gold);}
+  .score-bar .pname{color:var(--firefly);}
 
-  /* GAME SCREEN */
-  #game-screen{justify-content:flex-start;z-index:1;}
+  /* ===== GAME SCREEN ===== */
+  #game-screen{justify-content:flex-start;}
 
-  /* TOP PANEL */
-  .top-panel{position:relative;z-index:5;width:97%;max-width:750px;margin:clamp(40px,6.5vh,54px) auto 0;display:flex;flex-direction:column;gap:5px;}
+  /* ===== TOP PANEL ===== */
+  .top-panel{position:relative;z-index:5;width:97%;max-width:800px;margin:clamp(40px,6vh,52px) auto 0;display:flex;flex-direction:column;gap:5px;}
+
+  /* Part badge */
+  .part-badge{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:2px;}
+  .pbadge{font-family:'Boogaloo',cursive;font-size:clamp(0.75rem,1.9vw,0.95rem);padding:3px 14px;border-radius:20px;letter-spacing:1px;}
+  .pbadge-1{background:rgba(240,192,48,0.2);border:1.5px solid rgba(240,192,48,0.5);color:var(--gold);}
+  .pbadge-2{background:rgba(74,191,46,0.15);border:1.5px solid rgba(74,191,46,0.4);color:var(--firefly);}
 
   /* Spanish box */
-  .spanish-box{background:rgba(255,200,50,0.12);border:2px solid rgba(255,215,80,0.45);border-radius:14px;padding:7px 14px;text-align:center;}
-  .box-label{font-size:clamp(0.58rem,1.5vw,0.74rem);font-weight:900;letter-spacing:2px;text-transform:uppercase;}
-  .spanish-label{color:#ffd700;}
-  .spanish-text{font-family:'Fredoka One',cursive;font-size:clamp(0.95rem,3.2vw,1.65rem);color:#ffe680;text-shadow:0 2px 10px rgba(0,0,0,0.55);line-height:1.2;margin-top:2px;}
+  .spanish-box{background:rgba(240,192,48,0.1);border:2px solid rgba(240,192,48,0.38);border-radius:13px;padding:7px 14px;text-align:center;}
+  .box-label{font-size:clamp(0.56rem,1.4vw,0.7rem);font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+  .sp-label{color:var(--gold);}
+  .spanish-text{font-family:'Boogaloo',cursive;font-size:clamp(0.88rem,2.8vw,1.48rem);color:#ffe8a0;text-shadow:0 2px 8px rgba(0,0,0,0.6);line-height:1.25;margin-top:2px;}
 
-  /* English build box */
-  .english-box{background:rgba(30,180,110,0.1);border:2px solid rgba(60,190,120,0.38);border-radius:14px;padding:7px 14px;}
-  .english-label{color:#7de875;}
-  .sentence-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px;min-height:26px;margin-top:4px;}
-  .row-tag{font-size:clamp(0.58rem,1.4vw,0.72rem);color:rgba(255,255,255,0.45);font-weight:900;letter-spacing:1px;white-space:nowrap;margin-right:3px;}
-  .built-word{font-family:'Fredoka One',cursive;font-size:clamp(0.78rem,2.3vw,1.12rem);padding:2px 9px;border-radius:18px;color:white;animation:popIn 0.3s ease;text-shadow:0 1px 3px rgba(0,0,0,0.4);display:inline-block;}
-  @keyframes popIn{from{transform:scale(0) rotate(-10deg);opacity:0}to{transform:scale(1);opacity:1}}
-  .word-slot{display:inline-block;width:clamp(32px,6.5vw,55px);height:clamp(18px,3vh,25px);border-bottom:2px dashed rgba(255,255,255,0.22);border-radius:3px;margin:0 2px;vertical-align:middle;}
-  .placeholder-txt{color:rgba(255,255,255,0.28);font-style:italic;font-size:clamp(0.7rem,1.6vw,0.82rem);}
+  /* Build box */
+  .build-box{background:rgba(45,122,31,0.12);border:2px solid rgba(74,191,46,0.3);border-radius:13px;padding:7px 14px;}
+  .build-label{color:var(--firefly);}
+  .sentence-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px;min-height:28px;margin-top:4px;}
+  .row-tag{font-size:clamp(0.56rem,1.3vw,0.7rem);color:rgba(255,255,255,0.38);font-weight:700;letter-spacing:1px;white-space:nowrap;margin-right:2px;}
+  .built-word{font-family:'Boogaloo',cursive;font-size:clamp(0.8rem,2.2vw,1.1rem);padding:3px 10px;border-radius:18px;color:white;animation:popIn 0.28s ease;text-shadow:0 1px 4px rgba(0,0,0,0.5);display:inline-block;}
+  @keyframes popIn{from{transform:scale(0) rotate(-8deg);opacity:0}to{transform:scale(1);opacity:1}}
+  .word-slot{display:inline-block;width:clamp(28px,5.5vw,48px);height:clamp(16px,2.6vh,22px);border-bottom:2px dashed rgba(255,255,255,0.2);border-radius:3px;margin:0 2px;vertical-align:middle;}
+  .placeholder-txt{color:rgba(255,255,255,0.24);font-style:italic;font-size:clamp(0.66rem,1.4vw,0.78rem);}
 
-  /* Current Q box */
-  .current-q-box{background:rgba(255,255,255,0.11);border:2.5px solid rgba(255,255,255,0.45);border-radius:14px;padding:7px 14px;text-align:center;}
-  .current-q-label{font-size:clamp(0.58rem,1.5vw,0.74rem);font-weight:900;letter-spacing:2px;color:#a0c8ff;text-transform:uppercase;}
-  .current-q-text{font-family:'Fredoka One',cursive;font-size:clamp(0.9rem,2.8vw,1.48rem);color:white;text-shadow:0 2px 8px rgba(0,0,0,0.45);line-height:1.2;}
+  /* Instruction box */
+  .instr-box{background:rgba(255,255,255,0.08);border:2px solid rgba(200,255,128,0.38);border-radius:13px;padding:7px 14px;text-align:center;}
+  .instr-label{font-size:clamp(0.56rem,1.4vw,0.7rem);font-weight:700;letter-spacing:2px;color:#a0e870;text-transform:uppercase;}
+  .instr-text{font-family:'Boogaloo',cursive;font-size:clamp(0.84rem,2.5vw,1.3rem);color:white;text-shadow:0 2px 6px rgba(0,0,0,0.5);line-height:1.3;}
 
   /* Stage row */
-  .stage-row{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;gap:10px;margin:2px auto;width:97%;max-width:750px;}
-  .stage-pill{background:rgba(255,255,255,0.14);border:2px solid rgba(255,255,255,0.28);border-radius:30px;padding:3px 13px;color:white;font-size:clamp(0.62rem,1.7vw,0.82rem);font-weight:700;}
-  .hint-text{color:rgba(190,235,255,0.8);font-size:clamp(0.68rem,1.7vw,0.86rem);animation:hintPulse 2.2s ease-in-out infinite;text-shadow:0 1px 5px rgba(0,0,0,0.65);}
-  @keyframes hintPulse{0%,100%{opacity:0.6}50%{opacity:1}}
+  .stage-row{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;gap:8px;margin:2px auto;width:97%;max-width:800px;}
+  .stage-pill{background:rgba(255,255,255,0.1);border:1.5px solid rgba(200,255,128,0.28);border-radius:28px;padding:3px 12px;color:#c8ff80;font-size:clamp(0.6rem,1.6vw,0.78rem);font-weight:700;}
+  .hint-text{color:rgba(200,255,150,0.8);font-size:clamp(0.65rem,1.6vw,0.82rem);animation:hPulse 2.4s ease-in-out infinite;}
+  @keyframes hPulse{0%,100%{opacity:0.55}50%{opacity:1}}
 
-  /* GAME WORLD */
-  .game-world{position:relative;width:100%;flex:1;z-index:2;overflow:hidden;min-height:44vh;}
+  /* ===== GAME WORLD ===== */
+  .game-world{position:relative;width:100%;flex:1;z-index:2;overflow:hidden;min-height:42vh;}
 
-  /* LILY PADS */
-  .lily-pad{position:absolute;cursor:pointer;z-index:10;user-select:none;}
-  .lily-pad:hover svg{filter:brightness(1.28) drop-shadow(0 0 9px rgba(100,255,120,0.65));}
-  .lily-pad:active{transform:scale(0.92)!important;}
-  .pad-word{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-family:'Fredoka One',cursive;font-size:clamp(0.55rem,1.65vw,0.9rem);color:white;text-shadow:0 1px 5px rgba(0,0,0,0.85);text-align:center;width:90%;pointer-events:none;z-index:2;line-height:1.1;}
-  @keyframes padBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-  @keyframes correctFlash{0%{filter:brightness(1)}50%{filter:brightness(2.3) saturate(2)}100%{filter:brightness(1.4)}}
-  @keyframes wrongShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+  /* Lily pads — logs / mossy stones */
+  .lily-pad{position:absolute;cursor:pointer;z-index:10;user-select:none;transition:transform 0.1s;}
+  .lily-pad:hover svg{filter:brightness(1.35) drop-shadow(0 0 10px rgba(100,255,60,0.6));}
+  .lily-pad:active{transform:scale(0.89)!important;}
+  .pad-word{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);font-family:'Boogaloo',cursive;font-size:clamp(0.5rem,1.55vw,0.88rem);color:white;text-shadow:0 1px 5px rgba(0,0,0,0.95);text-align:center;width:88%;pointer-events:none;z-index:2;line-height:1.1;}
+  @keyframes logBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @keyframes correctFlash{0%{filter:brightness(1)}50%{filter:brightness(2.4) saturate(2) hue-rotate(40deg)}100%{filter:brightness(1.5)}}
+  @keyframes wrongShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-12px)}75%{transform:translateX(12px)}}
   .lily-pad.correct svg{animation:correctFlash 0.5s ease;}
-  .lily-pad.wrong{animation:wrongShake 0.5s ease;}
+  .lily-pad.wrong{animation:wrongShake 0.52s ease;}
 
-  /* FROG */
-  #frog{position:absolute;z-index:20;pointer-events:none;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.45));}
-  #frog svg{width:100%;height:100%;overflow:visible;}
+  /* Frog */
+  #frog{position:absolute;z-index:20;pointer-events:none;filter:drop-shadow(0 8px 16px rgba(0,0,0,0.6));}
 
-  /* SAFE LAND */
-  #safe-land{position:absolute;right:0;bottom:0;width:clamp(72px,13vw,130px);z-index:8;}
+  /* Forest floor */
+  #forest-floor{position:absolute;bottom:0;left:0;right:0;height:clamp(60px,14vh,110px);z-index:8;pointer-events:none;}
 
-  /* SPLASH */
-  .splash{position:absolute;pointer-events:none;z-index:25;animation:splashAnim 0.9s ease forwards;}
-  @keyframes splashAnim{0%{transform:scale(0);opacity:1}100%{transform:scale(2.3);opacity:0}}
-
-  /* FEEDBACK */
+  /* Feedback */
   .feedback-overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;pointer-events:none;opacity:0;}
-  .feedback-overlay.show{animation:feedShow 0.5s ease forwards;pointer-events:all;}
-  @keyframes feedShow{0%{opacity:0;transform:scale(0.5)}60%{opacity:1;transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
-  .feedback-text{font-family:'Fredoka One',cursive;font-size:clamp(2rem,9vw,4.8rem);text-shadow:0 4px 20px rgba(0,0,0,0.6);text-align:center;}
-  .feedback-sub{color:white;font-size:clamp(0.9rem,2.8vw,1.4rem);margin-top:10px;text-shadow:0 2px 8px rgba(0,0,0,0.55);text-align:center;padding:0 20px;}
+  .feedback-overlay.show{animation:feedShow 0.45s ease forwards;pointer-events:all;}
+  @keyframes feedShow{0%{opacity:0;transform:scale(0.4)}65%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+  .feedback-text{font-family:'Boogaloo',cursive;font-size:clamp(2.2rem,9vw,5rem);text-shadow:0 4px 20px rgba(0,0,0,0.7);text-align:center;}
+  .feedback-sub{color:white;font-size:clamp(0.88rem,2.6vw,1.35rem);margin-top:10px;text-shadow:0 2px 10px rgba(0,0,0,0.7);text-align:center;padding:0 20px;}
 
-  /* RESULTS */
+  /* ===== PART TRANSITION ===== */
+  #part-transition{position:fixed;inset:0;background:rgba(5,18,5,0.97);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:200;text-align:center;padding:30px;}
+  #part-transition.show{display:flex;}
+  .pt-title{font-family:'Boogaloo',cursive;font-size:clamp(2rem,7vw,4rem);color:var(--firefly);text-shadow:0 0 30px rgba(100,255,50,0.5);margin-bottom:12px;}
+  .pt-sub{color:rgba(200,255,160,0.85);font-size:clamp(0.9rem,2.4vw,1.2rem);margin-bottom:22px;line-height:1.6;max-width:520px;}
+  .pt-btn{background:linear-gradient(135deg,#3aaa1a,#1a7a08);color:white;border:none;border-radius:50px;padding:14px 48px;font-size:clamp(1rem,2.6vw,1.25rem);font-family:'Boogaloo',cursive;cursor:pointer;letter-spacing:1px;box-shadow:0 6px 24px rgba(40,160,10,0.5);transition:all 0.22s;}
+  .pt-btn:hover{transform:scale(1.06);}
+
+  /* ===== RESULTS ===== */
   #results-screen{z-index:1;}
-  .results-card{background:rgba(4,18,48,0.9);backdrop-filter:blur(16px);border:2px solid rgba(100,200,255,0.28);border-radius:30px;padding:clamp(20px,5vw,50px);text-align:center;max-width:640px;width:92%;z-index:2;box-shadow:0 0 80px rgba(0,100,255,0.12),0 20px 60px rgba(0,0,0,0.5);}
-  .results-title{font-family:'Fredoka One',cursive;font-size:clamp(1.7rem,5.5vw,3rem);color:#ffd700;}
-  .results-frog{font-size:clamp(2.8rem,9vw,4.8rem);margin:10px 0;animation:celebrate 1s ease-in-out infinite alternate;}
+  .results-card{background:rgba(5,18,5,0.94);backdrop-filter:blur(18px);border:2px solid rgba(74,191,46,0.28);border-radius:28px;padding:clamp(20px,5vw,48px);text-align:center;max-width:680px;width:92%;z-index:2;box-shadow:0 0 80px rgba(40,180,10,0.1),0 20px 60px rgba(0,0,0,0.6);}
+  .results-title{font-family:'Boogaloo',cursive;font-size:clamp(1.7rem,5.5vw,3rem);color:var(--gold);}
+  .results-icon{font-size:clamp(2.8rem,9vw,4.8rem);margin:10px 0;animation:celebrate 1s ease-in-out infinite alternate;}
   @keyframes celebrate{from{transform:translateY(0) rotate(-10deg)}to{transform:translateY(-15px) rotate(10deg)}}
-  .results-grade{font-family:'Fredoka One',cursive;font-size:clamp(4rem,14vw,7.5rem);line-height:1;background:linear-gradient(135deg,#ffd700,#ff8c00,#ff4757);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .results-name{color:white;font-size:clamp(0.95rem,2.8vw,1.28rem);margin:8px 0;}
-  .results-msg{color:rgba(200,240,255,0.9);font-size:clamp(0.85rem,2.2vw,1.05rem);margin:7px 0 16px;}
-  .results-detail{color:rgba(255,255,255,0.58);font-size:clamp(0.75rem,1.9vw,0.95rem);margin:4px 0;}
-  .transcript{background:rgba(0,0,0,0.32);border-radius:14px;padding:12px 15px;margin:14px 0;text-align:left;max-height:220px;overflow-y:auto;}
-  .transcript::-webkit-scrollbar{width:5px;}
-  .transcript::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.18);border-radius:3px;}
-  .transcript-row{margin-bottom:9px;border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:7px;}
-  .transcript-person{color:#ffd700;font-family:'Fredoka One',cursive;font-size:clamp(0.8rem,1.9vw,0.98rem);}
-  .transcript-sp{color:rgba(255,220,80,0.65);font-size:clamp(0.65rem,1.5vw,0.76rem);font-style:italic;margin-top:1px;}
-  .transcript-line{color:rgba(215,240,255,0.9);font-size:clamp(0.68rem,1.6vw,0.84rem);margin-top:2px;}
-  .play-again-btn{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#1a0a00;border:none;border-radius:50px;padding:clamp(11px,2.5vw,17px) clamp(26px,5vw,54px);font-size:clamp(0.95rem,2.8vw,1.22rem);font-family:'Fredoka One',cursive;cursor:pointer;margin-top:16px;transition:all 0.2s;box-shadow:0 6px 22px rgba(255,140,0,0.4);}
+  .results-grade{font-family:'Boogaloo',cursive;font-size:clamp(4rem,14vw,7.5rem);line-height:1;background:linear-gradient(135deg,#f0c030,#e08020,#c8ff80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .results-name{color:white;font-size:clamp(0.95rem,2.6vw,1.2rem);margin:8px 0;}
+  .results-msg{color:rgba(200,255,160,0.9);font-size:clamp(0.84rem,2.1vw,1.02rem);margin:7px 0 14px;}
+  .results-detail{color:rgba(255,255,255,0.5);font-size:clamp(0.73rem,1.8vw,0.92rem);margin:4px 0;}
+  .transcript{background:rgba(0,0,0,0.4);border-radius:14px;padding:12px 14px;margin:14px 0;text-align:left;max-height:260px;overflow-y:auto;}
+  .transcript::-webkit-scrollbar{width:4px;}
+  .transcript::-webkit-scrollbar-thumb{background:rgba(100,200,60,0.25);border-radius:3px;}
+  .tr-section{color:var(--gold);font-family:'Boogaloo',cursive;font-size:clamp(0.82rem,1.9vw,1rem);margin:8px 0 4px;}
+  .tr-row{margin-bottom:7px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .tr-sp{color:rgba(240,200,80,0.55);font-size:clamp(0.63rem,1.4vw,0.74rem);font-style:italic;}
+  .tr-en{color:rgba(200,255,160,0.9);font-size:clamp(0.67rem,1.55vw,0.84rem);margin-top:2px;}
+  .play-again-btn{background:linear-gradient(135deg,#3aaa1a,#1a7a08);color:white;border:none;border-radius:50px;padding:clamp(11px,2.4vw,16px) clamp(26px,5vw,52px);font-size:clamp(0.93rem,2.6vw,1.18rem);font-family:'Boogaloo',cursive;cursor:pointer;margin-top:16px;transition:all 0.2s;box-shadow:0 6px 22px rgba(40,160,10,0.4);}
   .play-again-btn:hover{transform:scale(1.05);}
 
-  /* MISC */
-  .star{position:absolute;border-radius:50%;background:white;animation:twinkle 2s infinite alternate;}
-  @keyframes twinkle{from{opacity:0.12}to{opacity:1}}
-  .particle{position:fixed;border-radius:50%;z-index:200;pointer-events:none;animation:partFall linear forwards;}
+  /* Particles & stars */
+  .star{position:absolute;border-radius:50%;background:var(--firefly);animation:twinkle 2.2s infinite alternate;}
+  @keyframes twinkle{from{opacity:0.08}to{opacity:0.9}}
+  .particle{position:fixed;z-index:200;pointer-events:none;animation:partFall linear forwards;}
   @keyframes partFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+  .splash{position:absolute;pointer-events:none;z-index:25;animation:splashAnim 0.9s ease forwards;}
+  @keyframes splashAnim{0%{transform:scale(0);opacity:1}100%{transform:scale(2.4);opacity:0}}
 </style>
 </head>
 <body>
+<canvas id="forest-canvas"></canvas>
 
-<canvas id="water-canvas"></canvas>
-
-<!-- ======= WELCOME ======= -->
+<!-- ===== WELCOME ===== -->
 <div id="welcome-screen" class="screen active">
   <div class="welcome-card">
     <div class="welcome-title" id="title-letters"></div>
+    <div class="welcome-grade">🎓 6th Grade English — Present Perfect</div>
     <span class="welcome-frog">🐸</span>
     <p class="welcome-sub">
-      ¡Salta a la hoja correcta y construye preguntas y respuestas en inglés!<br>
-      Jump to the right leaf and build English questions AND answers!
+      Jump through the forest and practise<br>
+      <b style="color:var(--gold)">Present Perfect</b> — awesome experiences!<br>
+      Read the Spanish clue and build the English sentence!
     </p>
+    <div class="part-pills">
+      <span class="ppill ppill-1">⭐ Part 1 — Past Participles (12 verbs)</span>
+      <span class="ppill ppill-2">🌿 Part 2 — Full Sentences (12 sentences)</span>
+    </div>
     <div class="name-wrap">
-      <label class="name-label">¿Cómo te llamas? / What's your name?</label>
+      <label class="name-label">What's your name, explorer?</label>
       <input class="name-input" id="student-name" type="text" placeholder="Type your name here…" maxlength="30" autocomplete="off">
-      <button class="start-btn" onclick="startGame()">🌿 LET'S PLAY! 🌿</button>
+      <button class="start-btn" onclick="startGame()">🐸 START THE ADVENTURE!</button>
     </div>
   </div>
 </div>
 
-<!-- ======= GAME ======= -->
+<!-- ===== GAME ===== -->
 <div id="game-screen" class="screen">
   <div class="score-bar">
     <span class="lives" id="lives-display">❤️❤️❤️</span>
-    <span class="prog"  id="prog-display">Person 1/7</span>
+    <span class="prog"  id="prog-display">Part 1 · 1/12</span>
     <span class="pname" id="pname-display"></span>
   </div>
 
   <div class="top-panel">
+    <div class="part-badge">
+      <span class="pbadge pbadge-1" id="part-badge-el">⭐ PART 1 — PAST PARTICIPLES</span>
+    </div>
 
-    <!-- Spanish prompt — ONLY thing shown to guide them -->
     <div class="spanish-box">
-      <div class="box-label spanish-label">🇲🇽 En Español — pregunta de hoy</div>
+      <div class="box-label sp-label">🇲🇽 En Español</div>
       <div class="spanish-text" id="spanish-text">…</div>
     </div>
 
-    <!-- English build-up — students construct this by jumping -->
-    <div class="english-box">
-      <div class="box-label english-label">🇺🇸 Building your English sentences</div>
-
-      <!-- Q1 question build -->
-      <div class="sentence-row" id="q1-q-row">
-        <span class="row-tag">Q1:</span>
-        <span id="q1-q-words"><span class="placeholder-txt">Jump to ask the question…</span></span>
-      </div>
-      <!-- A1 answer build -->
-      <div class="sentence-row" id="a1-row" style="display:none">
-        <span class="row-tag">A1:</span>
-        <span id="a1-words"><span class="placeholder-txt">Jump to answer…</span></span>
-      </div>
-      <!-- Q2 question build -->
-      <div class="sentence-row" id="q2-q-row" style="display:none">
-        <span class="row-tag">Q2:</span>
-        <span id="q2-q-words"><span class="placeholder-txt">Jump to ask the question…</span></span>
-      </div>
-      <!-- A2 answer build -->
-      <div class="sentence-row" id="a2-row" style="display:none">
-        <span class="row-tag">A2:</span>
-        <span id="a2-words"><span class="placeholder-txt">Jump to answer…</span></span>
+    <div class="build-box">
+      <div class="box-label build-label">🇺🇸 Your English answer</div>
+      <div class="sentence-row" id="build-row">
+        <span class="row-tag">→</span>
+        <span id="build-words"><span class="placeholder-txt">Jump to the correct word…</span></span>
       </div>
     </div>
 
-    <!-- Active instruction — tells them what to do, not the answer -->
-    <div class="current-q-box">
-      <div class="current-q-label">⭐ Tap the correct leaf!</div>
-      <div class="current-q-text" id="current-q-text">…</div>
+    <div class="instr-box">
+      <div class="instr-label">⭐ Jump to the correct leaf!</div>
+      <div class="instr-text" id="instr-text">…</div>
     </div>
   </div>
 
   <div class="stage-row">
-    <span class="stage-pill" id="stage-pill">Stage 1 / 4</span>
-    <span class="hint-text" id="hint-text">🐸 Jump to the correct word!</span>
+    <span class="stage-pill" id="stage-pill">1 / 12</span>
+    <span class="hint-text" id="hint-text">🐸 Hop to the right word!</span>
   </div>
 
   <div class="game-world" id="game-world">
     <div id="lily-pads-container"></div>
     <div id="frog">
-      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="40" cy="77" rx="20" ry="5" fill="rgba(0,0,0,0.18)"/>
-        <ellipse cx="17" cy="66" rx="10" ry="7" fill="#2d9b27" transform="rotate(-22,17,66)"/>
-        <ellipse cx="63" cy="66" rx="10" ry="7" fill="#2d9b27" transform="rotate(22,63,66)"/>
-        <ellipse cx="40" cy="52" rx="24" ry="20" fill="#3cb371"/>
-        <ellipse cx="40" cy="57" rx="16" ry="13" fill="#90ee90"/>
-        <ellipse cx="17" cy="55" rx="7" ry="5" fill="#3cb371" transform="rotate(30,17,55)"/>
-        <ellipse cx="63" cy="55" rx="7" ry="5" fill="#3cb371" transform="rotate(-30,63,55)"/>
-        <ellipse cx="40" cy="35" rx="22" ry="18" fill="#3cb371"/>
-        <circle cx="27" cy="24" r="9" fill="#3cb371"/>
-        <circle cx="53" cy="24" r="9" fill="#3cb371"/>
-        <circle cx="27" cy="24" r="7" fill="white"/>
-        <circle cx="53" cy="24" r="7" fill="white"/>
-        <circle cx="28" cy="24" r="4" fill="#111"/>
-        <circle cx="54" cy="24" r="4" fill="#111"/>
-        <circle cx="29" cy="22" r="1.5" fill="white"/>
-        <circle cx="55" cy="22" r="1.5" fill="white"/>
-        <path d="M30 40 Q40 48 50 40" stroke="#1a5c33" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <circle cx="36" cy="35" r="2" fill="#2d9b27"/>
-        <circle cx="44" cy="35" r="2" fill="#2d9b27"/>
+      <svg viewBox="0 0 80 88" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;overflow:visible">
+        <!-- Shadow -->
+        <ellipse cx="40" cy="85" rx="18" ry="4" fill="rgba(0,0,0,0.25)"/>
+        <!-- Back legs -->
+        <ellipse cx="14" cy="68" rx="11" ry="6" fill="#267a1a" transform="rotate(-28,14,68)"/>
+        <ellipse cx="66" cy="68" rx="11" ry="6" fill="#267a1a" transform="rotate(28,66,68)"/>
+        <!-- Feet -->
+        <ellipse cx="6"  cy="72" rx="8" ry="4" fill="#1e6014" transform="rotate(-10,6,72)"/>
+        <ellipse cx="74" cy="72" rx="8" ry="4" fill="#1e6014" transform="rotate(10,74,72)"/>
+        <!-- Body -->
+        <ellipse cx="40" cy="54" rx="24" ry="20" fill="#38a022"/>
+        <ellipse cx="40" cy="59" rx="16" ry="13" fill="#a0d870"/>
+        <!-- Arms -->
+        <ellipse cx="16" cy="56" rx="8" ry="5" fill="#38a022" transform="rotate(28,16,56)"/>
+        <ellipse cx="64" cy="56" rx="8" ry="5" fill="#38a022" transform="rotate(-28,64,56)"/>
+        <!-- Head -->
+        <ellipse cx="40" cy="37" rx="23" ry="19" fill="#38a022"/>
+        <!-- Eye bumps -->
+        <circle cx="26" cy="24" r="10" fill="#38a022"/>
+        <circle cx="54" cy="24" r="10" fill="#38a022"/>
+        <!-- Eyes -->
+        <circle cx="26" cy="24" r="8"  fill="white"/>
+        <circle cx="54" cy="24" r="8"  fill="white"/>
+        <circle cx="27" cy="24" r="4.5" fill="#111"/>
+        <circle cx="55" cy="24" r="4.5" fill="#111"/>
+        <circle cx="28" cy="22" r="1.8" fill="white"/>
+        <circle cx="56" cy="22" r="1.8" fill="white"/>
+        <!-- Smile -->
+        <path d="M28 42 Q40 52 52 42" stroke="#1a5c10" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Nostrils -->
+        <circle cx="36" cy="36" r="2" fill="#267a1a"/>
+        <circle cx="44" cy="36" r="2" fill="#267a1a"/>
+        <!-- Spots -->
+        <circle cx="30" cy="55" r="3" fill="rgba(0,0,0,0.12)"/>
+        <circle cx="50" cy="57" r="2.5" fill="rgba(0,0,0,0.12)"/>
+        <circle cx="42" cy="52" r="2" fill="rgba(0,0,0,0.1)"/>
       </svg>
     </div>
-    <div id="safe-land">
-      <svg viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="70" cy="92" rx="68" ry="33" fill="#2a5c30"/>
-        <ellipse cx="70" cy="82" rx="65" ry="25" fill="#38834a"/>
-        <g fill="#4caf50">
-          <path d="M20 82 Q15 57 25 52 Q28 67 22 82Z"/>
-          <path d="M35 80 Q32 55 42 50 Q44 65 37 80Z"/>
-          <path d="M95 80 Q92 55 102 50 Q104 65 97 80Z"/>
-          <path d="M110 82 Q107 57 117 52 Q119 67 112 82Z"/>
-          <path d="M57 77 Q55 52 65 47 Q67 62 59 77Z"/>
-          <path d="M77 77 Q75 52 85 47 Q87 62 79 77Z"/>
-        </g>
-        <circle cx="30" cy="66" r="4" fill="#ffeb3b"/>
-        <circle cx="52" cy="62" r="3" fill="#ff80ab"/>
-        <circle cx="90" cy="62" r="3" fill="#ff80ab"/>
-        <circle cx="110" cy="66" r="4" fill="#ffeb3b"/>
-        <ellipse cx="70" cy="74" rx="26" ry="12" fill="#5d4037"/>
-        <ellipse cx="70" cy="70" rx="23" ry="10" fill="#795548"/>
-        <text x="70" y="75" text-anchor="middle" font-size="18">🏆</text>
+    <div id="forest-floor">
+      <svg viewBox="0 0 800 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+        <!-- Ground -->
+        <rect x="0" y="60" width="800" height="50" fill="#1a0d04"/>
+        <path d="M0,60 Q80,40 160,58 Q240,75 320,55 Q400,38 480,60 Q560,78 640,55 Q720,38 800,60 L800,110 L0,110Z" fill="#2a1808"/>
+        <!-- Grass tufts -->
+        <path d="M0,62 Q10,45 20,62" stroke="#2d7a1f" stroke-width="3" fill="none"/>
+        <path d="M15,65 Q25,48 35,65" stroke="#38a022" stroke-width="2.5" fill="none"/>
+        <path d="M80,60 Q90,43 100,60" stroke="#2d7a1f" stroke-width="3" fill="none"/>
+        <path d="M150,65 Q160,46 172,65" stroke="#38a022" stroke-width="2.5" fill="none"/>
+        <path d="M240,58 Q250,41 262,58" stroke="#2d7a1f" stroke-width="3" fill="none"/>
+        <path d="M330,62 Q340,44 352,62" stroke="#38a022" stroke-width="2.5" fill="none"/>
+        <path d="M420,60 Q430,42 442,60" stroke="#2d7a1f" stroke-width="3" fill="none"/>
+        <path d="M510,65 Q522,47 534,65" stroke="#38a022" stroke-width="2.5" fill="none"/>
+        <path d="M600,58 Q612,40 624,58" stroke="#2d7a1f" stroke-width="3" fill="none"/>
+        <path d="M690,62 Q702,44 714,62" stroke="#38a022" stroke-width="2.5" fill="none"/>
+        <path d="M760,65 Q772,48 784,65" stroke="#2d7a1f" stroke-width="2.5" fill="none"/>
+        <!-- Trophy/goal area -->
+        <rect x="350" y="28" width="100" height="34" rx="8" fill="#3d2008"/>
+        <text x="400" y="53" text-anchor="middle" font-size="26">🏆</text>
+        <!-- Mushrooms -->
+        <text x="60"  y="62" font-size="18">🍄</text>
+        <text x="720" y="62" font-size="18">🍄</text>
+        <text x="180" y="64" font-size="14">🌿</text>
+        <text x="580" y="64" font-size="14">🌿</text>
       </svg>
     </div>
   </div>
@@ -257,387 +288,401 @@
   </div>
 </div>
 
-<!-- ======= RESULTS ======= -->
+<!-- ===== PART TRANSITION ===== -->
+<div id="part-transition">
+  <div style="font-size:clamp(3rem,10vw,5rem);margin-bottom:14px">🌿🐸🌿</div>
+  <div class="pt-title">⭐ Part 1 Complete! ⭐</div>
+  <div class="pt-sub">
+    Amazing! You know all the past participles!<br>
+    Now let's use them to build<br>
+    <b style="color:var(--gold)">full Present Perfect sentences!</b><br><br>
+    Read the Spanish clue → put the words in order!
+  </div>
+  <button class="pt-btn" onclick="startPart2()">🐸 START PART 2!</button>
+</div>
+
+<!-- ===== RESULTS ===== -->
 <div id="results-screen" class="screen">
   <div id="result-stars"></div>
   <div class="results-card">
-    <div class="results-title">🎉 REPORT CARD 🎉</div>
-    <div class="results-frog">🐸</div>
+    <div class="results-title">🎉 ADVENTURE COMPLETE! 🎉</div>
+    <div class="results-icon">🐸</div>
     <div class="results-name" id="result-name"></div>
     <div class="results-grade" id="result-grade">10</div>
     <div class="results-msg"  id="result-msg"></div>
-    <div class="results-detail" id="result-q-done"></div>
-    <div class="results-detail" id="result-mistakes"></div>
+    <div class="results-detail" id="result-detail1"></div>
+    <div class="results-detail" id="result-detail2"></div>
     <div class="transcript" id="transcript"></div>
     <button class="play-again-btn" onclick="resetGame()">🔄 Play Again!</button>
   </div>
 </div>
 
 <script>
-/* ========================================================
-   DATA
-======================================================== */
-const questions = [
-  { person:"Michael Jackson",
-    spanish1:"¿Quién fue Michael Jackson?",
-    q1:"Who was Michael Jackson?", a1:["He","was","a","pop","star"],
-    spanish2:"¿Qué hacía él?",
-    q2:"What did he do?",       a2:["He","sang","pop","songs"] },
-  { person:"Vicente Fernández",
-    spanish1:"¿Quién fue Vicente Fernández?",
-    q1:"Who was Vicente Fernández?", a1:["He","was","a","singer"],
-    spanish2:"¿Qué hacía él?",
-    q2:"What did he do?",            a2:["He","sang","Las","Mañanitas"] },
-  { person:"Frida Kahlo",
-    spanish1:"¿Quién fue Frida Kahlo?",
-    q1:"Who was Frida Kahlo?", a1:["She","was","a","painter"],
-    spanish2:"¿Qué hacía ella?",
-    q2:"What did she do?",     a2:["She","painted","pictures"] },
-  { person:"Albert Einstein",
-    spanish1:"¿Quién fue Albert Einstein?",
-    q1:"Who was Albert Einstein?", a1:["He","was","a","scientist"],
-    spanish2:"¿Qué hacía él?",
-    q2:"What did he do?",          a2:["He","made","science"] },
-  { person:"Adela Velarde",
-    spanish1:"¿Quién fue Adela Velarde?",
-    q1:"Who was Adela Velarde?", a1:["She","was","a","nurse"],
-    spanish2:"¿Qué hacía ella?",
-    q2:"What did she do?",       a2:["She","helped","people"] },
-  { person:"Pelé",
-    spanish1:"¿Quién fue Pelé?",
-    q1:"Who was Pelé?", a1:["He","was","a","soccer","player"],
-    spanish2:"¿Qué hacía él?",
-    q2:"What did he do?", a2:["He","played","for","Brazil"] },
-  { person:"Anthony McMillan",
-    spanish1:"¿Quién fue Anthony McMillan?",
-    q1:"Who was Anthony McMillan?", a1:["He","was","a","movie","star"],
-    spanish2:"¿Qué hacía él?",
-    q2:"What did he do?",           a2:["He","played","Hagrid"] }
+/* ============================================================
+   PART 1 DATA — 12 verbs → pick the correct past participle
+   Each shows Spanish clue + verb in base form, student picks participle
+============================================================ */
+const part1Data = [
+  { verb:"explore",  participle:"explored",  spanish:"¿Cuál es el participio pasado de EXPLORE?" },
+  { verb:"hold",     participle:"held",       spanish:"¿Cuál es el participio pasado de HOLD?" },
+  { verb:"sleep",    participle:"slept",      spanish:"¿Cuál es el participio pasado de SLEEP?" },
+  { verb:"go",       participle:"gone",       spanish:"¿Cuál es el participio pasado de GO?" },
+  { verb:"climb",    participle:"climbed",    spanish:"¿Cuál es el participio pasado de CLIMB?" },
+  { verb:"ride",     participle:"ridden",     spanish:"¿Cuál es el participio pasado de RIDE?" },
+  { verb:"see",      participle:"seen",       spanish:"¿Cuál es el participio pasado de SEE?" },
+  { verb:"meet",     participle:"met",        spanish:"¿Cuál es el participio pasado de MEET?" },
+  { verb:"fly",      participle:"flown",      spanish:"¿Cuál es el participio pasado de FLY?" },
+  { verb:"travel",   participle:"traveled",   spanish:"¿Cuál es el participio pasado de TRAVEL?" },
+  { verb:"swim",     participle:"swum",       spanish:"¿Cuál es el participio pasado de SWIM?" },
+  { verb:"be",       participle:"been",       spanish:"¿Cuál es el participio pasado de BE?" }
 ];
 
-/* 
-  STAGE SYSTEM (4 stages per person):
-  stage 1 = build Q1 (the question)
-  stage 2 = build A1 (the answer)
-  stage 3 = build Q2 (second question)
-  stage 4 = build A2 (second answer)
-*/
+/* Wrong participle options pool */
+const wrongParticiples = [
+  "explored","held","slept","gone","climbed","ridden","seen","met","flown","traveled","swum","been",
+  "exploren","holded","sleeped","goed","climbed","rided","seed","meeted","flied","travelt","swimmed","beed",
+  "explore","hold","sleep","go","climb","ride","see","meet","fly","travel","swim","are",
+  "has","have","been","done","said","made","took","came","went","saw"
+];
 
-const leafColors=[["#155c22","#2ecc71"],["#1a4ab0","#3498db"],["#7a1a9e","#9b59b6"],["#b56a10","#e67e22"],["#127a6e","#1abc9c"],["#8e1818","#e74c3c"],["#0f5945","#27ae60"],["#3a18b0","#8e44ad"],["#6e5c10","#f1c40f"],["#b01860","#e91e63"]];
-const wBg=["#e74c3c","#e67e22","#f1c40f","#2ecc71","#3498db","#9b59b6","#1abc9c","#e91e63","#ff5722","#00bcd4"];
-const wBgQ=["#3a6fd8","#2980b9","#1a6ba0","#1558a8","#2471c4","#1d5fa5","#265ea8","#2060b0"]; // blueish for questions
-const lc=["#ff4757","#ffa502","#2ed573","#1e90ff","#a29bfe","#fd79a8","#00b894","#e17055","#fdcb6e","#ffd700"];
+/* ============================================================
+   PART 2 DATA — 12 full sentences to order
+============================================================ */
+const part2Data = [
+  { spanish:"Yo he explorado una selva tropical.",          words:["I","have","explored","a","rainforest"] },
+  { spanish:"Ella ha sostenido una serpiente.",             words:["She","has","held","a","snake"] },
+  { spanish:"Él ha dormido en una tienda de campaña.",      words:["He","has","slept","in","a","tent"] },
+  { spanish:"Tú has ido a un safari.",                      words:["You","have","gone","on","a","safari"] },
+  { spanish:"Ellos han escalado un volcán.",                words:["They","have","climbed","a","volcano"] },
+  { spanish:"Yo he montado un camello.",                    words:["I","have","ridden","a","camel"] },
+  { spanish:"Ella ha visto las pirámides.",                 words:["She","has","seen","the","pyramids"] },
+  { spanish:"Nosotros hemos conocido a personas famosas.",  words:["We","have","met","famous","people"] },
+  { spanish:"Ellos han volado en globo aerostático.",       words:["They","have","flown","in","a","hot","air","balloon"] },
+  { spanish:"Tú has viajado a París.",                      words:["You","have","traveled","to","Paris"] },
+  { spanish:"Yo he nadado en un lago.",                     words:["I","have","swum","in","a","lake"] },
+  { spanish:"Yo he estado en Europa.",                      words:["I","have","been","in","Europe"] }
+];
 
-/* ========================================================
+/* ============================================================
+   PAD COLOURS — forest theme: mossy logs, stones, leaves
+============================================================ */
+const padColors = [
+  ["#1a4a08","#3a8a18"],["#2a3a08","#5a7a10"],["#083a10","#18701e"],
+  ["#3a2808","#7a5818"],["#083028","#186050"],["#0a3a2a","#1a7050"],
+  ["#1a1a3a","#303880"],["#2a0a3a","#602888"],["#1a2a0a","#4a6018"],
+  ["#3a1808","#7a3818"],["#081a3a","#185888"],["#1a0a28","#481868"]
+];
+
+const wBgPart1 = ["#1a5a08","#1e6c0a","#176006","#207410","#155802","#1a660c"];
+const wBgPart2 = ["#1a3a78","#1e4488","#163580","#204898","#143070","#1a3e8a"];
+const lc = ["#c8ff80","#f0c030","#4abf2e","#60d8ff","#ff8c60","#ffd060","#80ffb0","#ff70a0","#70d0ff","#ffa040"];
+
+const distractorsPart2 = [
+  "I","She","He","You","They","We","have","has","a","the","in","on","to",
+  "explored","held","slept","gone","climbed","ridden","seen","met","flown","traveled","swum","been",
+  "rainforest","snake","tent","safari","volcano","camel","pyramids","people","balloon","Paris","lake","Europe",
+  "famous","hot","air","and","an","my","their","his","her"
+];
+
+/* ============================================================
    STATE
-======================================================== */
-let studentName="",currentQ=0,stage=1,
-    builtQ1=[],builtA1=[],builtQ2=[],builtA2=[],
-    answeredWords=[],targetAnswer=[],
-    lives=3,mistakes=0,isAnimating=false,gameActive=false,frogPos={x:0,y:0};
+============================================================ */
+let studentName="", gamePart=1,
+    p1Index=0, p2Index=0,
+    answeredWords=[], targetAnswer=[],
+    builtP1=[], builtP2=[],
+    lives=3, mistakes=0,
+    isAnimating=false, gameActive=false,
+    frogPos={x:0,y:0};
 
-/* ========================================================
+/* ============================================================
    AUDIO
-======================================================== */
+============================================================ */
 let AC=null;
 function getAC(){if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();return AC;}
-function tone(f,t,d,vol=0.22,type="sine"){try{const ac=getAC(),o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type=type;o.frequency.setValueAtTime(f,ac.currentTime);if(t)o.frequency.exponentialRampToValueAtTime(t,ac.currentTime+d*0.8);g.gain.setValueAtTime(vol,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+d);o.start();o.stop(ac.currentTime+d);}catch(e){}}
-function playCorrect(){try{const ac=getAC(),now=ac.currentTime;[[523,0.0],[659,0.1],[784,0.2]].forEach(([f,t])=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(0.2,now+t);g.gain.exponentialRampToValueAtTime(0.001,now+t+0.32);o.start(now+t);o.stop(now+t+0.35);});}catch(e){}}
-function playWrong(){tone(220,110,0.45,0.28,"sawtooth");}
-function playJump(){tone(480,600,0.12,0.13);}
-function playSplash(){try{const ac=getAC(),n=ac.sampleRate*0.5,buf=ac.createBuffer(1,n,ac.sampleRate),d=buf.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,1.8);const s=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter();f.type="lowpass";f.frequency.value=650;s.buffer=buf;s.connect(f);f.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(0.4,ac.currentTime);s.start();}catch(e){}}
+function tone(f,t,d,vol=0.2,type="sine"){try{const ac=getAC(),o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type=type;o.frequency.setValueAtTime(f,ac.currentTime);if(t)o.frequency.exponentialRampToValueAtTime(t,ac.currentTime+d*0.8);g.gain.setValueAtTime(vol,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+d);o.start();o.stop(ac.currentTime+d);}catch(e){}}
+function playCorrect(){try{const ac=getAC(),now=ac.currentTime;[[520,0],[660,0.1],[800,0.21]].forEach(([f,t])=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type="sine";o.frequency.value=f;g.gain.setValueAtTime(0.18,now+t);g.gain.exponentialRampToValueAtTime(0.001,now+t+0.3);o.start(now+t);o.stop(now+t+0.34);});}catch(e){}}
+function playWrong(){tone(180,100,0.4,0.25,"sawtooth");}
+function playJump(){tone(500,640,0.11,0.12);}
+function playSplash(){try{const ac=getAC(),n=ac.sampleRate*0.45,buf=ac.createBuffer(1,n,ac.sampleRate),d=buf.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,1.7);const s=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter();f.type="lowpass";f.frequency.value=600;s.buffer=buf;s.connect(f);f.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(0.35,ac.currentTime);s.start();}catch(e){}}
 
-/* ========================================================
-   WATER CANVAS
-======================================================== */
-const canvas=document.getElementById("water-canvas"),ctx=canvas.getContext("2d");
-let cw,ch,fish=[],bubbles=[],wt=0;
+/* ============================================================
+   FOREST CANVAS
+============================================================ */
+const canvas=document.getElementById("forest-canvas"),ctx=canvas.getContext("2d");
+let cw,ch,fireflies=[],trees=[],wt=0;
 function resizeCanvas(){cw=canvas.width=window.innerWidth;ch=canvas.height=window.innerHeight;}
-const fishDefs=[
-  {e:"🐠",sz:26,sp:0.65,dep:0.58},{e:"🐟",sz:20,sp:0.95,dep:0.72},
-  {e:"🐡",sz:28,sp:0.48,dep:0.82},{e:"🦑",sz:22,sp:0.38,dep:0.67},
-  {e:"🐙",sz:18,sp:0.28,dep:0.92},{e:"🐠",sz:16,sp:1.15,dep:0.62},
-  {e:"🐟",sz:32,sp:0.52,dep:0.76},{e:"🦈",sz:40,sp:0.32,dep:0.87},
-  {e:"🐬",sz:34,sp:0.78,dep:0.53},{e:"🐚",sz:14,sp:0.18,dep:0.96},
-  {e:"🦀",sz:18,sp:0.22,dep:0.94},{e:"🐳",sz:42,sp:0.25,dep:0.6},
-];
-function initFish(){fish=fishDefs.map(f=>({...f,x:Math.random()*cw,y:0,dir:Math.random()>0.5?1:-1,wobble:Math.random()*Math.PI*2,ws:0.02+Math.random()*0.03,op:0.5+Math.random()*0.38,sp:f.sp*(0.75+Math.random()*0.5)}));}
-function initBubbles(){bubbles=[];for(let i=0;i<24;i++)bubbles.push({x:Math.random()*cw,y:ch+Math.random()*ch,r:3+Math.random()*9,sp:0.28+Math.random()*0.65,w:Math.random()*Math.PI*2,op:0.1+Math.random()*0.22});}
-function drawOcean(){
-  const sky=ctx.createLinearGradient(0,0,0,ch*0.44);
-  sky.addColorStop(0,"#6ab8dc");sky.addColorStop(0.45,"#4a96c0");sky.addColorStop(1,"#2270a0");
-  ctx.fillStyle=sky;ctx.fillRect(0,0,cw,ch*0.44);
-  const wat=ctx.createLinearGradient(0,ch*0.4,0,ch);
-  wat.addColorStop(0,"#1872b8");wat.addColorStop(0.3,"#0e5598");wat.addColorStop(0.7,"#073470");wat.addColorStop(1,"#02183a");
-  ctx.fillStyle=wat;ctx.fillRect(0,ch*0.4,cw,ch*0.6);
-  ctx.save();ctx.globalAlpha=0.035;
-  for(let i=0;i<9;i++){const rx=((cw*0.115*i)+(wt*28)+(i*75))%(cw+220)-110;const g=ctx.createLinearGradient(rx,ch*0.4,rx+55,ch);g.addColorStop(0,"rgba(80,190,255,0)");g.addColorStop(0.5,"rgba(80,190,255,1)");g.addColorStop(1,"rgba(80,190,255,0)");ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(rx-18,ch*0.4);ctx.lineTo(rx+73,ch*0.4);ctx.lineTo(rx+45,ch);ctx.lineTo(rx-48,ch);ctx.closePath();ctx.fill();}
+
+function initForest(){
+  fireflies=[];trees=[];
+  // Fireflies
+  for(let i=0;i<28;i++){
+    fireflies.push({x:Math.random()*cw,y:Math.random()*ch*0.8,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.3,phase:Math.random()*Math.PI*2,ps:0.018+Math.random()*0.03,r:1.5+Math.random()*2.5});
+  }
+  // Tree trunks (just for canvas atmosphere)
+  for(let i=0;i<7;i++){
+    trees.push({x:cw*(0.04+i*0.14+Math.random()*0.06),h:ch*(0.25+Math.random()*0.25),w:14+Math.random()*18});
+  }
+}
+
+function drawForest(){
+  // Sky gradient
+  const sky=ctx.createLinearGradient(0,0,0,ch);
+  sky.addColorStop(0,"#020d02");sky.addColorStop(0.5,"#041408");sky.addColorStop(0.8,"#0a2208");sky.addColorStop(1,"#1a0d04");
+  ctx.fillStyle=sky;ctx.fillRect(0,0,cw,ch);
+
+  // Moon glow
+  const moon=ctx.createRadialGradient(cw*0.8,ch*0.12,5,cw*0.8,ch*0.12,cw*0.3);
+  moon.addColorStop(0,"rgba(180,255,130,0.12)");moon.addColorStop(1,"rgba(0,0,0,0)");
+  ctx.fillStyle=moon;ctx.fillRect(0,0,cw,ch);
+
+  // Tree silhouettes
+  ctx.save();ctx.globalAlpha=0.55;
+  trees.forEach(t=>{
+    ctx.fillStyle="#020a02";
+    ctx.fillRect(t.x-t.w/2,ch-t.h,t.w,t.h);
+    // Canopy
+    ctx.beginPath();
+    ctx.ellipse(t.x,ch-t.h+10,t.w*2.2,t.h*0.38,0,0,Math.PI*2);
+    ctx.fillStyle="#030f03";ctx.fill();
+    ctx.beginPath();
+    ctx.ellipse(t.x-t.w*0.6,ch-t.h*0.7,t.w*1.6,t.h*0.3,Math.PI*0.1,0,Math.PI*2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.ellipse(t.x+t.w*0.7,ch-t.h*0.75,t.w*1.4,t.h*0.28,-Math.PI*0.08,0,Math.PI*2);
+    ctx.fill();
+  });
   ctx.restore();
-  for(let w=0;w<6;w++){ctx.save();ctx.globalAlpha=0.1+w*0.045;ctx.strokeStyle="rgba(255,255,255,0.9)";ctx.lineWidth=1.4-w*0.18;ctx.beginPath();const yb=ch*0.4+w*16;for(let x=0;x<=cw;x+=3){const y=yb+Math.sin(x*0.014+wt+w*0.9)*(5.5-w)+Math.sin(x*0.028+wt*1.4)*2.5;x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();ctx.restore();}
-  const deep=ctx.createLinearGradient(0,ch*0.65,0,ch);deep.addColorStop(0,"rgba(0,8,28,0)");deep.addColorStop(1,"rgba(0,4,18,0.58)");ctx.fillStyle=deep;ctx.fillRect(0,ch*0.65,cw,ch*0.35);
-  ctx.save();ctx.globalAlpha=0.28;ctx.fillStyle="#071a0e";ctx.fillRect(0,ch*0.93,cw,ch*0.07);
-  for(let sw=0;sw<14;sw++){const sx=(sw/14)*cw+22;ctx.strokeStyle=`hsl(${115+sw*8},55%,22%)`;ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(sx,ch);for(let s=0;s<6;s++){const sy=ch-s*16;const cx1=sx+Math.sin(wt*1.1+s+sw*0.6)*13;ctx.quadraticCurveTo(cx1,sy+8,sx,sy);}ctx.stroke();}
-  ctx.restore();
+
+  // Mist layer
   ctx.save();
-  [[0.1,0.07,110,42],[0.32,0.04,88,36],[0.62,0.09,135,48],[0.87,0.05,76,33]].forEach(([xr,yr,w,h],i)=>{const cx=xr*cw+Math.sin(wt*0.22+i)*22,cy=yr*ch;ctx.globalAlpha=0.72;ctx.fillStyle="white";[{rx:w/2,ry:h/2,ox:0,oy:0},{rx:w*0.3,ry:h*0.38,ox:-w*0.25,oy:5},{rx:w*0.28,ry:h*0.35,ox:w*0.26,oy:5}].forEach(cl=>{ctx.beginPath();ctx.ellipse(cx+cl.ox,cy+cl.oy,cl.rx,cl.ry,0,0,Math.PI*2);ctx.fill();});});
+  const mist=ctx.createLinearGradient(0,ch*0.65,0,ch*0.85);
+  mist.addColorStop(0,"rgba(60,120,40,0)");mist.addColorStop(0.5,"rgba(60,130,40,0.06)");mist.addColorStop(1,"rgba(20,60,10,0)");
+  ctx.fillStyle=mist;ctx.fillRect(0,ch*0.65,cw,ch*0.2);
+  ctx.restore();
+
+  // Fireflies
+  wt+=0.016;
+  fireflies.forEach(f=>{
+    f.x+=f.vx;f.y+=f.vy;f.phase+=f.ps;
+    if(f.x<-10)f.x=cw+10;if(f.x>cw+10)f.x=-10;
+    if(f.y<0)f.y=ch*0.8;if(f.y>ch*0.8)f.y=0;
+    const glow=Math.pow(Math.sin(f.phase)*0.5+0.5,2);
+    ctx.save();ctx.globalAlpha=glow*0.85;
+    const g=ctx.createRadialGradient(f.x,f.y,0,f.x,f.y,f.r*4);
+    g.addColorStop(0,"rgba(180,255,100,0.9)");g.addColorStop(1,"rgba(100,220,40,0)");
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(f.x,f.y,f.r*4,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle="rgba(220,255,160,0.95)";ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+  });
+
+  // Leaf particles drifting
+  ctx.save();
+  for(let i=0;i<6;i++){
+    const lx=((cw*(i*0.18+0.05)+wt*18*(i%2?1:-1)*8)%cw+cw)%cw;
+    const ly=((ch*0.1+i*ch*0.1+wt*12*(i%3===0?1:-1)*6)%(ch*0.9)+ch*0.05);
+    ctx.globalAlpha=0.18+0.12*Math.sin(wt+i);
+    ctx.font=`${12+i*2}px serif`;ctx.textAlign="center";ctx.fillText("🍃",lx,ly);
+  }
   ctx.restore();
 }
-function drawFish(){
-  bubbles.forEach(b=>{b.y-=b.sp;b.w+=0.05;b.x+=Math.sin(b.w)*0.5;if(b.y<ch*0.4){b.y=ch+b.r;b.x=Math.random()*cw;}if(b.y>ch*0.45){ctx.save();ctx.globalAlpha=b.op;ctx.strokeStyle="rgba(140,215,255,0.8)";ctx.lineWidth=1;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.stroke();ctx.fillStyle="rgba(255,255,255,0.28)";ctx.beginPath();ctx.arc(b.x-b.r*0.28,b.y-b.r*0.28,b.r*0.28,0,Math.PI*2);ctx.fill();ctx.restore();}});
-  fish.forEach(f=>{f.x+=f.sp*f.dir;f.wobble+=f.ws;f.y=ch*f.dep+Math.sin(f.wobble)*11;if(f.dir>0&&f.x>cw+70)f.x=-70;if(f.dir<0&&f.x<-70)f.x=cw+70;if(f.y>ch*0.42){ctx.save();ctx.globalAlpha=f.op;ctx.font=`${f.sz}px serif`;ctx.textAlign="center";ctx.textBaseline="middle";if(f.dir<0){ctx.translate(f.x,f.y);ctx.scale(-1,1);ctx.fillText(f.e,0,0);}else ctx.fillText(f.e,f.x,f.y);ctx.restore();}});
-}
-function waterLoop(){ctx.clearRect(0,0,cw,ch);wt+=0.017;drawOcean();drawFish();requestAnimationFrame(waterLoop);}
 
-/* ========================================================
+function forestLoop(){ctx.clearRect(0,0,cw,ch);drawForest();requestAnimationFrame(forestLoop);}
+
+/* ============================================================
    WELCOME
-======================================================== */
+============================================================ */
 function initWelcome(){
-  const title="FROG GRAMMAR ADVENTURE",el=document.getElementById("title-letters");
+  const title="AWESOME EXPERIENCES",el=document.getElementById("title-letters");
   el.innerHTML="";
-  title.split("").forEach((c,i)=>{if(c===" "){el.innerHTML+="<span style='width:0.35em;display:inline-block'></span>";return;}const s=document.createElement("span");s.className="rainbow-letter";s.textContent=c;s.style.color=lc[i%lc.length];s.style.animationDelay=(i*0.07)+"s";el.appendChild(s);});
+  title.split("").forEach((c,i)=>{
+    if(c===" "){el.innerHTML+="<span style='width:0.3em;display:inline-block'></span>";return;}
+    const s=document.createElement("span");s.className="bounce-letter";s.textContent=c;
+    s.style.color=lc[i%lc.length];s.style.animationDelay=(i*0.065)+"s";el.appendChild(s);
+  });
 }
 
-/* ========================================================
-   START GAME
-======================================================== */
+/* ============================================================
+   START
+============================================================ */
 function startGame(){
   const inp=document.getElementById("student-name"),name=inp.value.trim();
   if(!name){inp.style.borderColor="#ff4757";inp.focus();return;}
   studentName=name;
-  document.getElementById("pname-display").textContent="👤 "+studentName;
-  currentQ=0;stage=1;builtQ1=[];builtA1=[];builtQ2=[];builtA2=[];
-  answeredWords=[];lives=3;mistakes=0;isAnimating=false;gameActive=true;
+  document.getElementById("pname-display").textContent="🐸 "+studentName;
+  gamePart=1;p1Index=0;p2Index=0;
+  builtP1=[];builtP2=[];answeredWords=[];
+  lives=3;mistakes=0;isAnimating=false;gameActive=true;
   document.getElementById("welcome-screen").classList.remove("active");
   document.getElementById("game-screen").classList.add("active");
-  loadQuestion();
+  loadCurrent();
 }
 
-/* ========================================================
-   STAGE HELPERS
-   stage 1 = build Q1 words
-   stage 2 = build A1 words
-   stage 3 = build Q2 words
-   stage 4 = build A2 words
-======================================================== */
-function getTarget(){
-  const q=questions[currentQ];
-  if(stage===1) return q.q1.split(" ");
-  if(stage===2) return [...q.a1];
-  if(stage===3) return q.q2.split(" ");
-  if(stage===4) return [...q.a2];
+/* ============================================================
+   LOAD CURRENT ITEM
+============================================================ */
+function loadCurrent(){
+  if(gamePart===1) loadPart1();
+  else loadPart2();
 }
 
-function getStageLabel(){
-  if(stage===1) return "Ask Question 1 in English! 🤔";
-  if(stage===2) return "Now answer Question 1! 💬";
-  if(stage===3) return "Ask Question 2 in English! 🤔";
-  if(stage===4) return "Now answer Question 2! 💬";
-}
-
-function getStageHint(){
-  if(stage===1||stage===3) return "🐸 Jump to build the English question!";
-  return "🐸 Jump to build the English answer!";
-}
-
-/* ========================================================
-   LOAD QUESTION / STAGE
-======================================================== */
-function loadQuestion(){
-  if(currentQ>=questions.length){endGame();return;}
-  const q=questions[currentQ];
-  answeredWords=[];
-  targetAnswer=getTarget();
-
-  // Show Spanish for current pair
-  const isFirstPair=(stage===1||stage===2);
-  document.getElementById("spanish-text").innerHTML=rainbow(isFirstPair?q.spanish1:q.spanish2);
-
-  // Stage indicator
-  document.getElementById("stage-pill").textContent=`Stage ${stage} / 4`;
-  document.getElementById("prog-display").textContent=`Person ${currentQ+1}/${questions.length}`;
-  document.getElementById("hint-text").textContent=getStageHint();
-  document.getElementById("current-q-text").textContent=getStageLabel();
-
-  // Show/hide rows based on what's been completed
-  // Q1 row always visible
-  show("q1-q-row");
-  if(stage===1){
-    setHTML("q1-q-words",`<span class="placeholder-txt">Jump to ask the question…</span>`);
-    hide("a1-row");hide("q2-q-row");hide("a2-row");
-  } else if(stage===2){
-    renderWords("q1-q-words",builtQ1,wBgQ);
-    show("a1-row");
-    setHTML("a1-words",`<span class="placeholder-txt">Jump to answer…</span>`);
-    hide("q2-q-row");hide("a2-row");
-  } else if(stage===3){
-    renderWords("q1-q-words",builtQ1,wBgQ);
-    renderWords("a1-words",builtA1,wBg);
-    show("q2-q-row");
-    setHTML("q2-q-words",`<span class="placeholder-txt">Jump to ask the question…</span>`);
-    hide("a2-row");
-  } else if(stage===4){
-    renderWords("q1-q-words",builtQ1,wBgQ);
-    renderWords("a1-words",builtA1,wBg);
-    renderWords("q2-q-words",builtQ2,wBgQ);
-    show("a2-row");
-    setHTML("a2-words",`<span class="placeholder-txt">Jump to answer…</span>`);
+/* --- PART 1 --- */
+function loadPart1(){
+  if(p1Index>=part1Data.length){
+    // Done with part 1 → show transition
+    gameActive=false;
+    document.getElementById("part-transition").classList.add("show");
+    return;
   }
+  const item=part1Data[p1Index];
+  answeredWords=[];
+  targetAnswer=[item.participle];
+
+  document.getElementById("part-badge-el").textContent="⭐ PART 1 — PAST PARTICIPLES";
+  document.getElementById("part-badge-el").className="pbadge pbadge-1";
+  document.getElementById("spanish-text").innerHTML=rainbow(item.spanish);
+  document.getElementById("prog-display").textContent=`Part 1 · ${p1Index+1}/12`;
+  document.getElementById("stage-pill").textContent=`${p1Index+1} / 12`;
+  document.getElementById("hint-text").textContent="🐸 Hop to the correct past participle!";
+  document.getElementById("instr-text").textContent=`What is the past participle of "${item.verb.toUpperCase()}"?`;
+  setHTML("build-words",`<span class="placeholder-txt">Jump to the correct participle…</span>`);
 
   updateLivesDisplay();
-  renderLilyPads();
+  renderLilyPadsPart1(item);
   placeFrogAtStart();
 }
 
-function renderWords(id,words,colors){
-  const c=document.getElementById(id);c.innerHTML="";
-  words.forEach((w,i)=>{const s=document.createElement("span");s.className="built-word";s.textContent=w;s.style.background=colors[i%colors.length];c.appendChild(s);});
-}
-function setHTML(id,h){document.getElementById(id).innerHTML=h;}
-function show(id){document.getElementById(id).style.display="flex";}
-function hide(id){document.getElementById(id).style.display="none";}
-
-function updateBuild(){
-  // Which row is being built right now?
-  const id=stage===1?"q1-q-words":stage===2?"a1-words":stage===3?"q2-q-words":"a2-words";
-  const colors=( stage===1||stage===3)?wBgQ:wBg;
-  const total=targetAnswer.length;
-  const c=document.getElementById(id);c.innerHTML="";
-  answeredWords.forEach((w,i)=>{const s=document.createElement("span");s.className="built-word";s.textContent=w;s.style.background=colors[i%colors.length];c.appendChild(s);});
-  for(let i=answeredWords.length;i<total;i++){const sl=document.createElement("span");sl.className="word-slot";c.appendChild(sl);}
-}
-
-function rainbow(text){
-  return text.split("").map((c,i)=>c===" "?" ":`<span style="color:${lc[i%lc.length]};font-family:'Fredoka One',cursive">${c}</span>`).join("");
-}
-
-function updateLivesDisplay(){let d="";for(let i=0;i<3;i++)d+=(i<lives?"❤️":"💔");document.getElementById("lives-display").textContent=d;}
-
-/* ========================================================
-   LILY PADS
-======================================================== */
-function renderLilyPads(){
+function renderLilyPadsPart1(item){
   const container=document.getElementById("lily-pads-container");container.innerHTML="";
   const world=document.getElementById("game-world");
   const ww=world.clientWidth||window.innerWidth,wh=world.clientHeight||300;
-  const correct=[...targetAnswer];
-  const pool=["a","the","an","was","is","are","very","big","fast","slow","ran","jumped","swam","ate","his","her","they","famous","great","went","came","old","kind","brave","smart","funny","nice","cool","did","she","he","who","what","where","when","how","they","we"];
-  const used=new Set(correct);const dists=[];let tries=0;
-  while(dists.length<Math.min(3,correct.length)&&tries<80){const w=pool[Math.floor(Math.random()*pool.length)];if(!used.has(w)){dists.push(w);used.add(w);}tries++;}
+
+  // Collect wrong options: other real participles + some bad forms, avoid correct
+  const correct=item.participle;
+  const pool=wrongParticiples.filter(w=>w!==correct);
+  const used=new Set([correct]);
+  const wrongs=[];
+  // First add the verb's own wrong forms from pool
+  for(const w of pool){if(wrongs.length>=5)break;if(!used.has(w)){wrongs.push(w);used.add(w);}}
+  const allPads=shuffle([correct,...wrongs.slice(0,5)]);
+  renderPads(allPads,ww,wh,wBgPart1,(pad,word)=>onPadClickPart1(pad,word));
+}
+
+/* --- PART 2 --- */
+function loadPart2(){
+  if(p2Index>=part2Data.length){endGame();return;}
+  const item=part2Data[p2Index];
+  answeredWords=[];
+  targetAnswer=[...item.words];
+
+  document.getElementById("part-badge-el").textContent="🌿 PART 2 — FULL SENTENCES";
+  document.getElementById("part-badge-el").className="pbadge pbadge-2";
+  document.getElementById("spanish-text").innerHTML=rainbow(item.spanish);
+  document.getElementById("prog-display").textContent=`Part 2 · ${p2Index+1}/12`;
+  document.getElementById("stage-pill").textContent=`${p2Index+1} / 12`;
+  document.getElementById("hint-text").textContent="🐸 Hop to build the sentence word by word!";
+  document.getElementById("instr-text").textContent="Put the words in the correct order!";
+  setHTML("build-words",`<span class="placeholder-txt">Jump to the first word…</span>`);
+
+  updateLivesDisplay();
+  renderLilyPadsPart2(item);
+  placeFrogAtStart();
+}
+
+function renderLilyPadsPart2(item){
+  const container=document.getElementById("lily-pads-container");container.innerHTML="";
+  const world=document.getElementById("game-world");
+  const ww=world.clientWidth||window.innerWidth,wh=world.clientHeight||300;
+
+  const correct=[...item.words];
+  const used=new Set(correct);
+  const dists=[];let tries=0;
+  while(dists.length<Math.min(4,correct.length)&&tries<120){
+    const w=distractorsPart2[Math.floor(Math.random()*distractorsPart2.length)];
+    if(!used.has(w)){dists.push(w);used.add(w);}
+    tries++;
+  }
   const all=shuffle([...correct,...dists]);
-  const count=all.length;
-  const padW=Math.min(Math.max(ww/(count+1.3),50),106);
+  renderPads(all,ww,wh,wBgPart2,(pad,word)=>onPadClickPart2(pad,word));
+}
+
+/* ============================================================
+   RENDER PADS (shared)
+============================================================ */
+function renderPads(allWords,ww,wh,colors,clickHandler){
+  const container=document.getElementById("lily-pads-container");
+  const count=allWords.length;
+  const padW=Math.min(Math.max(ww/(count+1.1),44),96);
   const padH=padW*0.52;
-  const rows=count>5?2:1,perRow=Math.ceil(count/rows);
-  all.forEach((word,i)=>{
+  const rows=count>7?2:1,perRow=Math.ceil(count/rows);
+
+  allWords.forEach((word,i)=>{
     const row=rows===2?(i<perRow?0:1):0;
     const col=i%perRow;
     const inRow=rows===2?(row===0?Math.min(perRow,count):count-perRow):count;
-    const rowW=inRow*(padW+10);
-    const sx=Math.max(6,(ww-rowW)/2);
-    const [y0,y1]=rows===2?(row===0?[0.1,0.42]:[0.46,0.76]):[0.18,0.72];
-    const x=sx+col*(padW+10)+(Math.random()-0.5)*9;
+    const rowW=inRow*(padW+7);
+    const sx=Math.max(5,(ww-rowW)/2);
+    const [y0,y1]=rows===2?(row===0?[0.06,0.40]:[0.44,0.74]):[0.12,0.70];
+    const x=sx+col*(padW+7)+(Math.random()-0.5)*7;
     const y=wh*y0+Math.random()*(wh*(y1-y0));
-    const [c1,c2]=leafColors[i%leafColors.length];
+    const [c1,c2]=padColors[i%padColors.length];
+
     const pad=document.createElement("div");
     pad.className="lily-pad";
-    pad.style.cssText=`left:${x}px;top:${y}px;width:${padW}px;height:${padH}px;animation:padBob ${2.4+Math.random()*2}s ease-in-out ${Math.random()*2}s infinite;`;
+    pad.style.cssText=`left:${x}px;top:${y}px;width:${padW}px;height:${padH}px;animation:logBob ${2+Math.random()*2.2}s ease-in-out ${Math.random()*2}s infinite;`;
     pad.dataset.word=word;
+
+    // Mossy log / stone shape
     pad.innerHTML=`<svg viewBox="0 0 100 52" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
       <defs>
-        <radialGradient id="g${i}" cx="38%" cy="32%" r="65%">
-          <stop offset="0%" stop-color="${c2}"/>
-          <stop offset="100%" stop-color="${c1}"/>
+        <radialGradient id="pg${i}" cx="30%" cy="25%" r="72%">
+          <stop offset="0%" stop-color="${c2}"/><stop offset="100%" stop-color="${c1}"/>
         </radialGradient>
-        <filter id="ds${i}"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="rgba(0,0,0,0.38)"/></filter>
       </defs>
-      <ellipse cx="50" cy="30" rx="48" ry="22" fill="url(#g${i})" filter="url(#ds${i})"/>
-      <path d="M50 8 L50 30" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" fill="none"/>
-      <path d="M6 22 Q28 15 50 30" stroke="rgba(255,255,255,0.16)" stroke-width="1" fill="none"/>
-      <path d="M94 22 Q72 15 50 30" stroke="rgba(255,255,255,0.16)" stroke-width="1" fill="none"/>
-      <circle cx="50" cy="30" r="6" fill="rgba(255,255,255,0.2)"/>
-      <ellipse cx="50" cy="30" rx="48" ry="22" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <ellipse cx="50" cy="28" rx="46" ry="22" fill="url(#pg${i})"/>
+      <ellipse cx="50" cy="28" rx="46" ry="22" fill="none" stroke="rgba(180,255,100,0.18)" stroke-width="1.5"/>
+      <!-- Moss texture -->
+      <ellipse cx="22" cy="18" rx="8" ry="4" fill="rgba(80,200,40,0.18)"/>
+      <ellipse cx="72" cy="22" rx="6" ry="3" fill="rgba(80,200,40,0.14)"/>
+      <ellipse cx="50" cy="14" rx="12" ry="3" fill="rgba(120,220,60,0.12)"/>
+      <!-- Highlight -->
+      <ellipse cx="34" cy="18" rx="18" ry="5" fill="rgba(255,255,255,0.08)"/>
     </svg>
     <div class="pad-word">${word}</div>`;
-    pad.addEventListener("click",()=>onPadClick(pad,word));
+
+    pad.addEventListener("click",()=>clickHandler(pad,word));
     container.appendChild(pad);
   });
 }
 
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-/* ========================================================
+/* ============================================================
    FROG
-======================================================== */
+============================================================ */
 function placeFrogAtStart(){
   const world=document.getElementById("game-world");
   const ww=world.clientWidth||window.innerWidth,wh=world.clientHeight||300;
   const el=document.getElementById("frog");
-  const sz=Math.min(Math.max(ww*0.1,50),86);
+  const sz=Math.min(Math.max(ww*0.1,46),82);
   el.style.width=sz+"px";el.style.height=sz+"px";
-  frogPos={x:ww/2-sz/2,y:wh*0.87};
+  frogPos={x:ww/2-sz/2,y:wh*0.84};
   el.style.left=frogPos.x+"px";el.style.top=frogPos.y+"px";
   el.style.opacity="1";el.style.transform="";
-}
-
-/* ========================================================
-   PAD CLICK
-======================================================== */
-function onPadClick(padEl,word){
-  if(!gameActive||isAnimating)return;
-  const expected=targetAnswer[answeredWords.length];
-  if(word===expected){
-    playJump();isAnimating=true;
-    jumpTo(padEl,()=>{
-      playCorrect();
-      padEl.classList.add("correct");
-      answeredWords.push(word);
-      updateBuild();
-
-      if(answeredWords.length===targetAnswer.length){
-        // Completed this stage
-        setTimeout(()=>{
-          if(stage===1){
-            builtQ1=[...answeredWords];
-            showFeedback("❓ ¡Pregunta!","Now answer it!","#3498db",()=>{stage=2;answeredWords=[];loadQuestion();});
-          } else if(stage===2){
-            builtA1=[...answeredWords];
-            showFeedback("✅ ¡Correcto!","Now ask the second question!","#27ae60",()=>{stage=3;answeredWords=[];loadQuestion();});
-          } else if(stage===3){
-            builtQ2=[...answeredWords];
-            showFeedback("❓ ¡Pregunta!","Now answer it!","#3498db",()=>{stage=4;answeredWords=[];loadQuestion();});
-          } else if(stage===4){
-            builtA2=[...answeredWords];
-            const last=currentQ>=questions.length-1;
-            showFeedback("🎉 ¡Perfecto!",last?"You saved everyone!":"Next person!","#ffd700",()=>{
-              currentQ++;stage=1;builtQ1=[];builtA1=[];builtQ2=[];builtA2=[];answeredWords=[];
-              if(currentQ>=questions.length)endGame();else loadQuestion();
-            });
-            if(!last)spawnParticles();
-          }
-          isAnimating=false;
-        },380);
-      } else { isAnimating=false; }
-    });
-  } else {
-    playWrong();padEl.classList.add("wrong");mistakes++;lives--;
-    updateLivesDisplay();
-    setTimeout(()=>padEl.classList.remove("wrong"),620);
-    if(lives<=0){isAnimating=true;frogFall();}
-  }
 }
 
 function jumpTo(padEl,cb){
   const world=document.getElementById("game-world"),el=document.getElementById("frog");
   const sz=parseInt(el.style.width)||68;
   const pr=padEl.getBoundingClientRect(),wr=world.getBoundingClientRect();
-  const tx=pr.left-wr.left+pr.width/2-sz/2,ty=pr.top-wr.top+pr.height/2-sz*0.68;
-  const sx=frogPos.x,sy=frogPos.y,dur=480,t0=performance.now();
+  const tx=pr.left-wr.left+pr.width/2-sz/2,ty=pr.top-wr.top+pr.height/2-sz*0.65;
+  const sx=frogPos.x,sy=frogPos.y,dur=440,t0=performance.now();
   function step(now){
-    const t=Math.min((now-t0)/dur,1),e=t<0.5?2*t*t:-1+(4-2*t)*t,arc=Math.sin(Math.PI*t)*74;
+    const t=Math.min((now-t0)/dur,1),e=t<0.5?2*t*t:-1+(4-2*t)*t,arc=Math.sin(Math.PI*t)*68;
     el.style.left=(sx+(tx-sx)*e)+"px";el.style.top=(sy+(ty-sy)*e-arc)+"px";
-    el.style.transform=`scaleX(${1-Math.sin(Math.PI*t)*0.14}) scaleY(${1+Math.sin(Math.PI*t)*0.14})`;
+    el.style.transform=`scaleX(${1-Math.sin(Math.PI*t)*0.13}) scaleY(${1+Math.sin(Math.PI*t)*0.13})`;
     if(t<1)requestAnimationFrame(step);
-    else{frogPos={x:tx,y:ty};el.style.left=tx+"px";el.style.top=ty+"px";el.style.transform="scaleX(1.18) scaleY(0.84)";setTimeout(()=>{el.style.transform="";if(cb)cb();},140);}
+    else{frogPos={x:tx,y:ty};el.style.left=tx+"px";el.style.top=ty+"px";el.style.transform="scaleX(1.16) scaleY(0.86)";setTimeout(()=>{el.style.transform="";if(cb)cb();},130);}
   }
   requestAnimationFrame(step);
 }
@@ -648,58 +693,198 @@ function frogFall(){
   el.style.transition="top 1.2s ease-in,opacity 1.2s,transform 1.2s";
   el.style.top=(world.clientHeight+80)+"px";el.style.opacity="0";el.style.transform="rotate(180deg) scale(0.4)";
   const sp=document.createElement("div");sp.className="splash";
-  sp.innerHTML=`<svg viewBox="0 0 90 90" width="90" height="90"><circle cx="45" cy="45" r="40" fill="none" stroke="rgba(100,200,255,0.8)" stroke-width="5"/><circle cx="45" cy="45" r="24" fill="none" stroke="rgba(150,220,255,0.6)" stroke-width="3"/><text x="45" y="56" text-anchor="middle" font-size="28">💦</text></svg>`;
+  sp.innerHTML=`<svg viewBox="0 0 90 90" width="90" height="90"><circle cx="45" cy="45" r="38" fill="none" stroke="rgba(100,220,60,0.8)" stroke-width="5"/><text x="45" y="56" text-anchor="middle" font-size="28">💦</text></svg>`;
   sp.style.cssText=`left:${frogPos.x-5}px;top:${frogPos.y-5}px;`;
   world.appendChild(sp);
-  setTimeout(()=>{sp.remove();gameActive=false;showFeedback("💦 ¡Splash!","The frog fell! Restarting…","#e74c3c",()=>resetToBeginning());},1300);
+  setTimeout(()=>{sp.remove();gameActive=false;showFeedback("🐸 Splash!","The frog fell! Starting over…","#e63900",()=>resetToBeginning());},1300);
 }
 
+/* ============================================================
+   PAD CLICK — PART 1
+============================================================ */
+function onPadClickPart1(padEl,word){
+  if(!gameActive||isAnimating)return;
+  const correct=part1Data[p1Index].participle;
+  if(word===correct){
+    playJump();isAnimating=true;
+    jumpTo(padEl,()=>{
+      playCorrect();padEl.classList.add("correct");
+      // Show in build row
+      const c=document.getElementById("build-words");c.innerHTML="";
+      const s=document.createElement("span");s.className="built-word";s.textContent=word;s.style.background=wBgPart1[0];c.appendChild(s);
+      builtP1.push({verb:part1Data[p1Index].verb,participle:word});
+      setTimeout(()=>{
+        const isLast=p1Index>=part1Data.length-1;
+        showFeedback("✅ Correct!",`"${word}" — great job!`,"#2ea010",()=>{
+          p1Index++;isAnimating=false;
+          if(p1Index>=part1Data.length){gameActive=false;document.getElementById("part-transition").classList.add("show");}
+          else loadCurrent();
+        });
+        if(!isLast)spawnParticles();
+        isAnimating=false;
+      },360);
+    });
+  } else {
+    playWrong();padEl.classList.add("wrong");mistakes++;lives--;
+    updateLivesDisplay();
+    setTimeout(()=>padEl.classList.remove("wrong"),600);
+    if(lives<=0){isAnimating=true;frogFall();}
+  }
+}
+
+/* ============================================================
+   PAD CLICK — PART 2
+============================================================ */
+function onPadClickPart2(padEl,word){
+  if(!gameActive||isAnimating)return;
+  const expected=targetAnswer[answeredWords.length];
+  if(word===expected){
+    playJump();isAnimating=true;
+    jumpTo(padEl,()=>{
+      playCorrect();padEl.classList.add("correct");
+      answeredWords.push(word);
+      updateBuildPart2();
+
+      if(answeredWords.length===targetAnswer.length){
+        builtP2.push({...part2Data[p2Index],built:[...answeredWords]});
+        setTimeout(()=>{
+          const isLast=p2Index>=part2Data.length-1;
+          showFeedback("🌿 Perfect!",isLast?"You finished all sentences! ¡Increíble!":"Next sentence!","#3aaa1a",()=>{
+            p2Index++;answeredWords=[];
+            if(p2Index>=part2Data.length)endGame();else loadCurrent();
+          });
+          if(!isLast)spawnParticles();
+          isAnimating=false;
+        },360);
+      } else {isAnimating=false;}
+    });
+  } else {
+    playWrong();padEl.classList.add("wrong");mistakes++;lives--;
+    updateLivesDisplay();
+    setTimeout(()=>padEl.classList.remove("wrong"),600);
+    if(lives<=0){isAnimating=true;frogFall();}
+  }
+}
+
+function updateBuildPart2(){
+  const colors=wBgPart2;
+  const total=targetAnswer.length;
+  const c=document.getElementById("build-words");c.innerHTML="";
+  answeredWords.forEach((w,i)=>{
+    const s=document.createElement("span");s.className="built-word";s.textContent=w;s.style.background=colors[i%colors.length];c.appendChild(s);
+  });
+  for(let i=answeredWords.length;i<total;i++){
+    const sl=document.createElement("span");sl.className="word-slot";c.appendChild(sl);
+  }
+}
+
+/* ============================================================
+   PART TRANSITION → start part 2
+============================================================ */
+function startPart2(){
+  document.getElementById("part-transition").classList.remove("show");
+  gamePart=2;p2Index=0;answeredWords=[];
+  lives=3;updateLivesDisplay();
+  gameActive=true;
+  // Reset frog visually
+  const el=document.getElementById("frog");
+  el.style.transition="none";el.style.opacity="1";el.style.transform="";
+  void el.offsetHeight;el.style.transition="";
+  loadCurrent();
+}
+
+/* ============================================================
+   FEEDBACK / HELPERS
+============================================================ */
 function showFeedback(text,sub,color,cb){
   const ov=document.getElementById("feedback-overlay");
-  document.getElementById("feedback-text").textContent=text;document.getElementById("feedback-text").style.color=color;
+  document.getElementById("feedback-text").textContent=text;
+  document.getElementById("feedback-text").style.color=color;
   document.getElementById("feedback-sub").textContent=sub;
-  ov.className="feedback-overlay show";ov.style.background=color+"25";
-  setTimeout(()=>{ov.className="feedback-overlay";ov.style.background="";if(cb)cb();},1750);
+  ov.className="feedback-overlay show";ov.style.background=color+"22";
+  setTimeout(()=>{ov.className="feedback-overlay";ov.style.background="";if(cb)cb();},1700);
 }
-
-function spawnParticles(){const cs=["#ff4757","#ffa502","#2ed573","#1e90ff","#a29bfe","#ffd700","#fd79a8","#00b894"];for(let i=0;i<32;i++){const p=document.createElement("div");p.className="particle";const sz=8+Math.random()*14;p.style.cssText=`width:${sz}px;height:${sz}px;background:${cs[Math.floor(Math.random()*cs.length)]};left:${5+Math.random()*90}%;top:${Math.random()*14}%;animation:partFall ${1.5+Math.random()*2}s linear ${Math.random()*0.4}s forwards;border-radius:${Math.random()>0.5?"50%":"4px"};`;document.body.appendChild(p);setTimeout(()=>p.remove(),3800);}}
+function setHTML(id,h){document.getElementById(id).innerHTML=h;}
+function updateLivesDisplay(){let d="";for(let i=0;i<3;i++)d+=(i<lives?"❤️":"💔");document.getElementById("lives-display").textContent=d;}
+function rainbow(text){return text.split("").map((c,i)=>c===" "?" ":`<span style="color:${lc[i%lc.length]};font-family:'Boogaloo',cursive">${c}</span>`).join("");}
+function spawnParticles(){
+  const cs=["#c8ff80","#f0c030","#4abf2e","#60d8ff","#ff8c60","#80ffb0","#ffd060","#70d0ff"];
+  for(let i=0;i<28;i++){
+    const p=document.createElement("div");p.className="particle";
+    const sz=7+Math.random()*13;
+    p.style.cssText=`width:${sz}px;height:${sz}px;background:${cs[Math.floor(Math.random()*cs.length)]};left:${5+Math.random()*90}%;top:${Math.random()*12}%;animation:partFall ${1.4+Math.random()*2}s linear ${Math.random()*0.4}s forwards;border-radius:${Math.random()>0.5?"50%":"4px"};`;
+    document.body.appendChild(p);setTimeout(()=>p.remove(),3600);
+  }
+}
 
 function resetToBeginning(){
-  currentQ=0;stage=1;builtQ1=[];builtA1=[];builtQ2=[];builtA2=[];answeredWords=[];lives=3;mistakes=0;isAnimating=false;gameActive=true;
-  const el=document.getElementById("frog");el.style.transition="none";el.style.opacity="1";el.style.transform="";void el.offsetHeight;el.style.transition="";
-  updateLivesDisplay();loadQuestion();
+  gamePart=1;p1Index=0;p2Index=0;
+  builtP1=[];builtP2=[];answeredWords=[];
+  lives=3;mistakes=0;isAnimating=false;gameActive=true;
+  const el=document.getElementById("frog");
+  el.style.transition="none";el.style.opacity="1";el.style.transform="";
+  void el.offsetHeight;el.style.transition="";
+  updateLivesDisplay();loadCurrent();
 }
 
-/* ========================================================
+/* ============================================================
    END GAME
-======================================================== */
+============================================================ */
 function endGame(){
   gameActive=false;
   document.getElementById("game-screen").classList.remove("active");
   document.getElementById("results-screen").classList.add("active");
+
   const se=document.getElementById("result-stars");se.innerHTML="";
-  for(let i=0;i<55;i++){const s=document.createElement("div");s.className="star";const sz=1+Math.random()*3;s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-delay:${Math.random()*2}s;`;se.appendChild(s);}
-  const grade=mistakes===0?10:Math.max(6,10-mistakes);
-  document.getElementById("result-name").textContent="Student: "+studentName;
+  for(let i=0;i<60;i++){
+    const s=document.createElement("div");s.className="star";
+    const sz=1+Math.random()*3;
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-delay:${Math.random()*2.5}s;`;
+    se.appendChild(s);
+  }
+
+  const grade=mistakes===0?10:Math.max(6,10-Math.floor(mistakes/2));
+  document.getElementById("result-name").textContent="Explorer: "+studentName;
   document.getElementById("result-grade").textContent=grade;
-  document.getElementById("result-q-done").textContent=`✅ Completed: ${questions.length} people · ${questions.length*4} stages`;
-  document.getElementById("result-mistakes").textContent=`❌ Mistakes: ${mistakes}`;
-  document.getElementById("result-msg").textContent=grade===10?"🌟 PERFECT SCORE! You're a Grammar Champion! 🌟":grade>=9?"⭐ Excellent! Almost perfect!":grade>=8?"👍 Great job! Keep practising!":"📚 Good effort! Try again for a perfect 10!";
+  document.getElementById("result-detail1").textContent="✅ Part 1: 12 past participles · Part 2: 12 sentences";
+  document.getElementById("result-detail2").textContent=`❌ Mistakes: ${mistakes}`;
+  document.getElementById("result-msg").textContent=
+    grade===10?"🌟 PERFECT SCORE! You're a grammar explorer! 🌟":
+    grade>=9?"⭐ Excellent adventure! Almost perfect!":
+    grade>=8?"👍 Great job! Keep exploring!":
+    "📚 Good effort! Try again for a perfect 10!";
+
   const tr=document.getElementById("transcript");
-  tr.innerHTML=`<div style="color:#ffd700;font-family:'Fredoka One',cursive;margin-bottom:8px;font-size:0.95rem">📋 Full Q&A — Español → English</div>`;
-  questions.forEach(q=>{const d=document.createElement("div");d.className="transcript-row";d.innerHTML=`<div class="transcript-person">👤 ${q.person}</div><div class="transcript-sp">${q.spanish1}</div><div class="transcript-line">Q: <b style="color:#7dbfff">${q.q1}</b></div><div class="transcript-line">A: <b style="color:#7de875">${q.a1.join(" ")}</b></div><div class="transcript-sp">${q.spanish2}</div><div class="transcript-line">Q: <b style="color:#7dbfff">${q.q2}</b></div><div class="transcript-line">A: <b style="color:#7de875">${q.a2.join(" ")}</b></div>`;tr.appendChild(d);});
+  tr.innerHTML=`<div class="tr-section">⭐ Part 1 — Past Participles</div>`;
+  part1Data.forEach(item=>{
+    const d=document.createElement("div");d.className="tr-row";
+    d.innerHTML=`<div class="tr-sp">${item.spanish}</div>
+    <div class="tr-en"><b style="color:#c8ff80">${item.verb}</b> → <b style="color:#f0c030">${item.participle}</b></div>`;
+    tr.appendChild(d);
+  });
+  const sec2=document.createElement("div");sec2.className="tr-section";sec2.style.marginTop="10px";sec2.textContent="🌿 Part 2 — Full Sentences";tr.appendChild(sec2);
+  part2Data.forEach(item=>{
+    const d=document.createElement("div");d.className="tr-row";
+    d.innerHTML=`<div class="tr-sp">${item.spanish}</div>
+    <div class="tr-en"><b style="color:#80c8ff">${item.words.join(" ")}</b></div>`;
+    tr.appendChild(d);
+  });
   spawnParticles();
 }
 
-function resetGame(){document.getElementById("results-screen").classList.remove("active");document.getElementById("welcome-screen").classList.add("active");initWelcome();}
+function resetGame(){
+  document.getElementById("results-screen").classList.remove("active");
+  document.getElementById("welcome-screen").classList.add("active");
+  initWelcome();
+}
 
-/* ========================================================
+/* ============================================================
    INIT
-======================================================== */
+============================================================ */
 document.addEventListener("DOMContentLoaded",()=>{
-  resizeCanvas();initFish();initBubbles();waterLoop();initWelcome();
+  resizeCanvas();initForest();forestLoop();initWelcome();
   document.getElementById("student-name").addEventListener("keypress",e=>{if(e.key==="Enter")startGame();});
-  window.addEventListener("resize",()=>{resizeCanvas();if(gameActive){renderLilyPads();placeFrogAtStart();}});
+  window.addEventListener("resize",()=>{resizeCanvas();initForest();if(gameActive){if(gamePart===1)renderLilyPadsPart1(part1Data[p1Index]);else renderLilyPadsPart2(part2Data[p2Index]);placeFrogAtStart();}});
 });
 </script>
 </body>
